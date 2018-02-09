@@ -5,6 +5,7 @@ import com.sun.demo.sys.entity.User;
 import com.sun.demo.sys.service.UserService;
 import com.sun.demo.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @RequestMapping(value="sys/user")
 public class UserController {
 
+    @Qualifier("userServiceImpl")
     @Autowired
     private UserService service;
 
