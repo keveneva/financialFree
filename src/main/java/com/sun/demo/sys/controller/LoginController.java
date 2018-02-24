@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Created by me on 2018年2月24日11:15:53
- * 集合前端框架.
+ * 集合前端框架. 再次测试
  */
 @RestController
 @RequestMapping(value="sys/login")
@@ -24,6 +24,7 @@ public class LoginController {
     @RequestMapping(value="login")
     public Result<User> findAll(@RequestParam int pageNo, @RequestParam int pageSize, String keyword){
         //各种密码的验证
+
         return ResultUtils.success();
     }
 
