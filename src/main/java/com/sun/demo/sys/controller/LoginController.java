@@ -23,7 +23,7 @@ public class LoginController {
 
     @RequestMapping(value="login")
     public Result<User> findAll(@RequestParam int pageNo, @RequestParam int pageSize, String keyword){
-
+        //各种密码的验证
         return ResultUtils.success();
     }
 
