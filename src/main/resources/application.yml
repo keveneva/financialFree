@@ -1,9 +1,15 @@
 server:
   port: 8086
-  context-path: /demo
+  context-path: /
 spring:
-  profiles:
-    active: dev
+  thymeleaf:
+      cash: false
+      mode: HTML5
+      prefix: classpath:/templates/
+      suffix: .jsp
+
+#  profiles:
+#    active: dev
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&serverTimezone=UTC
     username: root
@@ -38,3 +44,6 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
+lms:
+  tempFilePath: d:/temp #临时下载文件路径

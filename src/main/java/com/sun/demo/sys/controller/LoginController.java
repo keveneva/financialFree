@@ -6,6 +6,7 @@ import com.sun.demo.sys.service.UserService;
 import com.sun.demo.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by me on 2018年2月24日11:15:53
  * 集合前端框架.
  */
-@RestController
+@Controller
 public class LoginController {
 
 
@@ -25,6 +26,11 @@ public class LoginController {
         //各种密码的验证
 
         return ResultUtils.success();
+    }
+    @RequestMapping(value="index")
+    public String get(){
+
+        return "index";
     }
 
 
