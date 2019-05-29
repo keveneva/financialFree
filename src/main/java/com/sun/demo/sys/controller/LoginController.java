@@ -17,11 +17,10 @@ import java.util.List;
  * 集合前端框架.
  */
 @RestController
-@RequestMapping(value="sys/login")
 public class LoginController {
 
 
-    @RequestMapping(value="login")
+    @RequestMapping(value="sys/login")
     public Result<User> findAll(@RequestParam int pageNo, @RequestParam int pageSize, String keyword){
         //各种密码的验证
 

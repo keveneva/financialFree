@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 8086
   context-path: /demo
 spring:
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&serverTimezone=UTC
     username: root
