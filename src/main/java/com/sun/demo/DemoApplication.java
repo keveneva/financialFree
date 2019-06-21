@@ -1,39 +1,42 @@
 package com.sun.demo;
 
-import org.apache.log4j.Logger;
-import org.mybatis.spring.annotation.MapperScan;
+import com.sun.demo.common.base.repository.BaseRepositoryImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-/**
- * 用于 手动启动项目，采用springboot自带的tomcat
- *一个项目中只能存在一个SpringBootApplication 用这个就必须注释掉serverApplication，不然启动报错
- */
+@Slf4j
 @SpringBootApplication
+@EnableJpaRepositories(repositoryBaseClass = BaseRepositoryImpl.class)
 @ServletComponentScan
-@MapperScan("com.sun.demo.sys.dao")
+@EnableAsync
+@EnableCaching
+@EnableScheduling
 public class DemoApplication extends SpringBootServletInitializer implements CommandLineRunner{
 
-    private final Logger logger = Logger.getLogger(DemoApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
-    // Java EE应用服务器配置，
-    // 如果要使用tomcat来加载jsp的话就必须继承SpringBootServletInitializer类并且重写其中configure方法
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(this.getClass());
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
     }
 
-    // springboot运行后此方法首先被调用
-    // 实现CommandLineRunner抽象类中的run方法
+
     @Override
-    public void run(String... args) throws Exception {
-        logger.info("项目启动完成！");
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DemoApplication.class);
+    }
+
+
+    @Override
+    public void run(String... strings) throws Exception {
+        log.debug("项目启动完成!");
     }
 }
